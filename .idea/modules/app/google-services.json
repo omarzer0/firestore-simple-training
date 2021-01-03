@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "89147172192",
+    "project_id": "firestore-upload-data",
+    "storage_bucket": "firestore-upload-data.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:89147172192:android:1e549e9f7346df6f142a05",
+        "android_client_info": {
+          "package_name": "omar.az.firestoreuploaddata"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "89147172192-h4gbrisn9df9n0hkk25m5tb46nr4heh8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "omar.az.firestoreuploaddata",
+            "certificate_hash": "5b064d4d956fd66788d2b0823bd5d988ce133913"
+          }
+        },
+        {
+          "client_id": "89147172192-lv67pc94lu9jdie5bfqpfjoli6eq0h41.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-cNyQSbVQOj4KKi2NnXQowxY42OCyrPo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "89147172192-lv67pc94lu9jdie5bfqpfjoli6eq0h41.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

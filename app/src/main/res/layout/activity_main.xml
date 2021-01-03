@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        tools:context=".MainActivity">
+
+        <EditText
+            android:id="@+id/etFName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:hint="first name"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/etNewFName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:hint="new first name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/etLName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:hint="last name"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etFName" />
+
+        <EditText
+            android:id="@+id/etNewLName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:hint="new last name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/etNewFName" />
+
+        <EditText
+            android:id="@+id/etAge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:hint="age"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etLName" />
+
+        <EditText
+            android:id="@+id/etNewAge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:hint="new age"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/etNewLName" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:text="save to database"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etAge" />
+
+        <Button
+            android:id="@+id/btnUpdate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:text="update Person"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/etNewAge" />
+
+        <Button
+            android:id="@+id/btnRetrieve"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:text="retrieve Data"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnSave" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:text="Delete Data"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/btnSave" />
+
+        <EditText
+            android:id="@+id/etFrom"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:hint="from"
+            app:layout_constraintEnd_toEndOf="@+id/btnRetrieve"
+            app:layout_constraintStart_toStartOf="@+id/btnRetrieve"
+            app:layout_constraintTop_toBottomOf="@+id/btnRetrieve" />
+
+        <EditText
+            android:id="@+id/etTo"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:hint="to"
+            app:layout_constraintEnd_toEndOf="@+id/btnDelete"
+            app:layout_constraintStart_toStartOf="@+id/btnDelete"
+            app:layout_constraintTop_toBottomOf="@+id/btnDelete" />
+
+        <TextView
+            android:id="@+id/tvRetrieve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:text="Data:\n"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etFrom"
+            app:layout_constraintVertical_bias="0" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
