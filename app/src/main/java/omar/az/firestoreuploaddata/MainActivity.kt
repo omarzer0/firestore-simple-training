@@ -2,6 +2,7 @@ package omar.az.firestoreuploaddata
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.QuerySnapshot
@@ -10,11 +11,8 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.withContext
 import java.lang.Exception
 import java.lang.StringBuilder
 
@@ -44,6 +42,14 @@ class MainActivity : AppCompatActivity() {
             deletePersonData(getOldPersonData())
         }
         subscribeTpRealTimeUpdate()
+
+        btnDoBatchWrite.setOnClickListener {
+            changeName("Tov1MNIyPgRuvFbahvq8", "abc", "edf")
+        }
+
+        btnDoTransaction.setOnClickListener {
+            birthday("Tov1MNIyPgRuvFbahvq8")
+        }
     }
 
     private fun getOldPersonData(): Person {
@@ -192,4 +198,41 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun changeName(personId: String, newFirstName: String, newLastName: String) =
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                // write Batch writes only if no fail happens in one of the fields that will be write
+                // do not forget to use await
+                Firebase.firestore.runBatch { batch ->
+                    val personRef = personCollectionRef.document(personId)
+                    batch.update(personRef, "firstName", newFirstName)
+                    batch.update(personRef, "lastName", newLastName)
+                    // the changes will be automatically committed when this block finishes so no need to commit
+//                    batch.commit()
+                }.await()
+
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(this@MainActivity, e.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+    private fun birthday(personId: String) = CoroutineScope(Dispatchers.IO).launch {
+        try {
+            // transaction can do multiple operations (ex: update and get date ) and handle concurrence between all users
+            Firebase.firestore.runTransaction { transaction ->
+                val personRef = personCollectionRef.document(personId)
+                val person = transaction.get(personRef)
+                val newAge = person["age"] as Long + 1
+                transaction.update(personRef, "age", newAge)
+                // return null means the transaction was successful
+                null
+            }.await()
+        } catch (e: Exception) {
+            withContext(Dispatchers.Main) {
+                Toast.makeText(this@MainActivity, e.message, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 }
